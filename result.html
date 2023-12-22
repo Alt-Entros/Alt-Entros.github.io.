@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../image/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Итоги</title>
+</head>
+<body>
+    <header>
+        <h1>
+            Итоги
+        </h1>
+    </header>
+    <body>
+        <table class="final_result">
+            <tr>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>парк Вандерленд</td>
+                <td>Математический зоопарк</td>
+                <td>Сказочная математика</td>
+                <td>Спортплощадка</td>
+                <td>Зал торжеств</td>
+                <td>Роттонда</td>
+                <td>Пруд</td>
+                <td>Каскад прудов</td>
+                <td>Коллонада</td>
+                <td>Прокат</td>
+                <td>Храм</td>
+                <td>итог</td>
+            </tr>
+            <tr>
+                <td>1к</td>
+                <td id="resultPage1Task1">-</td>
+                <td id="resultPage2Task1">-</td>
+                <td id="resultPage3Task1">-</td>
+                <td id="resultPage4Task1">-</td>
+                <td id="resultPage5Task1">-</td>
+                <td id="resultPage6Task1">-</td>
+                <td id="resultPage7Task1">-</td>
+                <td id="resultPage8Task1">-</td>
+                <td id="resultPage9Task1">-</td>
+                <td id="resultPage10Task1">-</td>
+                <td id="resultPage11Task1">-</td>
+                <td id="totalResultTask1">0</td>
+            </tr>
+            <tr>
+                <td>2к</td>
+                <td id="resultPage1Task2">-</td>
+                <td id="resultPage2Task2">-</td>
+                <td id="resultPage3Task2">-</td>
+                <td id="resultPage4Task2">-</td>
+                <td id="resultPage5Task2">-</td>
+                <td id="resultPage6Task2">-</td>
+                <td id="resultPage7Task2">-</td>
+                <td id="resultPage8Task2">-</td>
+                <td id="resultPage9Task2">-</td>
+                <td id="resultPage10Task2">-</td>
+                <td id="resultPage11Task2">-</td>
+                <td id="totalResultTask2">0</td>
+            </tr>
+            <tr>
+                <td>3к</td>
+                <td id="resultPage1Task3">-</td>
+                <td id="resultPage2Task3">-</td>
+                <td id="resultPage3Task3">-</td>
+                <td id="resultPage4Task3">-</td>
+                <td id="resultPage5Task3">-</td>
+                <td id="resultPage6Task3">-</td>
+                <td id="resultPage7Task3">-</td>
+                <td id="resultPage8Task3">-</td>
+                <td id="resultPage9Task3">-</td>
+                <td id="resultPage10Task3">-</td>
+                <td id="resultPage11Task3">-</td>
+                <td id="totalResultTask3">0</td>
+            </tr>
+            <tr>
+                <td>4к</td>
+                <td id="resultPage1Task4">-</td>
+                <td id="resultPage2Task4">-</td>
+                <td id="resultPage3Task4">-</td>
+                <td id="resultPage4Task4">-</td>
+                <td id="resultPage5Task4">-</td>
+                <td id="resultPage6Task4">-</td>
+                <td id="resultPage7Task4">-</td>
+                <td id="resultPage8Task4">-</td>
+                <td id="resultPage9Task4">-</td>
+                <td id="resultPage10Task4">-</td>
+                <td id="resultPage11Task4">-</td>
+                <td id="totalResultTask4">0</td>
+            </tr>
+            <tr>
+                <td>5к</td>
+                <td id="resultPage1Task5">-</td>
+                <td id="resultPage2Task5">-</td>
+                <td id="resultPage3Task5">-</td>
+                <td id="resultPage4Task5">-</td>
+                <td id="resultPage5Task5">-</td>
+                <td id="resultPage6Task5">-</td>
+                <td id="resultPage7Task5">-</td>
+                <td id="resultPage8Task5">-</td>
+                <td id="resultPage9Task5">-</td>
+                <td id="resultPage10Task5">-</td>
+                <td id="resultPage11Task5">-</td>
+                <td id="totalResultTask5">0</td>
+            </tr>
+        </table>
+        <div>
+            <a href="../map.html" class="btn btn3">Карта</a>
+            <button onclick="sendTestData()" class="btn btn2">Отправить результаты</button>
+        </div>
+        <script src="script.js"></script>
+        <script>
+            
+            function displayFinalResults() {
+                for (let i = 1; i <= 11; i++) {
+                    const pageResults = JSON.parse(localStorage.getItem('resultsPage' + i));
+                    if (pageResults) {
+                        for (let j = 0; j < pageResults.length; j++) {
+                            const resultCell = document.getElementById('resultPage' + i + 'Task' + (j + 1));
+                            if (resultCell) {
+                                resultCell.textContent = pageResults[j] ? '1' : '0';
+                            }
+                        }
+                    }
+                }
+            }
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                displayFinalResults();
+                
+            });
+            
+            function sumValuesAndDisplayResultForTask(taskNumber, resultCellId) {
+                let sum = 0;
+
+                // Суммируем результаты для задания с номером taskNumber
+                for (let page = 1; page <= 11; page++) {
+                    let cellId = `resultPage${page}Task${taskNumber}`;
+                    let cell = document.getElementById(cellId);
+                    if (cell && !isNaN(parseFloat(cell.textContent))) {
+                        sum += parseFloat(cell.textContent);
+                    }
+                }
+
+                // Сохраняем итоговый результат в localStorage
+                localStorage.setItem(`resultPageTask${taskNumber}`, sum);
+
+                // Отображаем итоговый результат в соответствующей ячейке
+                let resultCell = document.getElementById(resultCellId);
+                if (resultCell) {
+                    resultCell.textContent = sum; // Отображаем целое число
+                }
+            }
+ 
+         // Пример вызова функции для задания №1
+         document.addEventListener('DOMContentLoaded', function() {
+             sumValuesAndDisplayResultForTask(1, 'totalResultTask1');
+             sumValuesAndDisplayResultForTask(2, 'totalResultTask2');
+             sumValuesAndDisplayResultForTask(3, 'totalResultTask3');
+             sumValuesAndDisplayResultForTask(4, 'totalResultTask4');
+             sumValuesAndDisplayResultForTask(5, 'totalResultTask5');
+         });
+
+         function sendTestData() {
+            // Собираем информацию о пользователе
+            const userInfo = JSON.parse(localStorage.getItem('userInfo')) || {};
+
+            // Собираем результаты страниц и заданий
+            const testResults = [];
+            for (let i = 1; i <= 11; i++) {
+                testResults.push(JSON.parse(localStorage.getItem('resultsPage' + i)));
+            }
+            for (let j = 1; j <= 5; j++) {
+                testResults.push(JSON.parse(localStorage.getItem('resultsPageTask' + j)));
+            }
+
+            // Формируем объект данных для отправки
+            const dataToSend = {
+                TestX: [userInfo, ...testResults]
+            };
+
+            // Отправка данных на бэкенд
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataToSend)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data sent successfully:', data);
+                alert("Результаты были отправлены");
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Произошла ошибка при отправке результатов");
+            });
+        }
+
+        </script>
+    </body>
+</body>
+</html>

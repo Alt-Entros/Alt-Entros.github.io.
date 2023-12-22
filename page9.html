@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коллонада</title>
+    <link rel="icon" href="../image/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Коллонада</h1>
+    </header>
+    <main>
+        <div class="questions">
+            <div class="attributes">№</div> <div class="attributes">Задание</div> <div class="attributes answer">Ответ</div> <div class="attributes res">Результат</div>
+            <div>9.1</div> 
+                        <div>
+                            Квадратное 3х<sup>2</sup> -11х-20=0
+                        </div> <input type="text" id="answer9_1"> <div id="result9_1" class="result"></div>
+            <div>9.2</div> 
+                        <div class="cont">
+                            Рациональное <img src="../image/Page9/Questions9_2.png" alt="">
+                        </div> <input type="text" id="answer9_2"> <div id="result9_2" class="result"></div>
+            <div>9.3</div> 
+                        <div class="cont">
+                            Иррациональное <img src="../image/Page9/questions9_3.png    " alt="">
+                        </div> <input type="text" id="answer9_3"> <div id="result9_3" class="result"></div> 
+            <div>9.4</div> 
+                        <div>
+                            Показательное 2<sup>x-10</sup> = 256
+                        </div> <input type="text" id="answer9_4"> <div id="result9_4" class="result"></div>
+            <div>9.5</div> 
+                        <div>
+                            Логарифмическое log<sub>4</sub>(x-2) = 2
+                        </div> <input type="text" id="answer9_5"> <div id="result9_5" class="result"></div>
+            <a href="../map.html" class="btn">Карта</a>
+            <button id="checkAnswersButton9" class="btn">Проверить</button>
+        </div>
+        <div class="images">
+            <div>
+                <img src="../image/Page9/img9_1.jpg" alt="">
+            </div>
+            <div>
+                <img src="../image/Page9/img9_2.jpg" alt="">
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        function CheckAnswersPage9() {
+        var results = [
+            checkAndDisplayResult('answer9_1', 'result9_1', 5),
+            checkAndDisplayResult('answer9_2', 'result9_2', 5),
+            checkAndDisplayResult('answer9_3', 'result9_3', 5),
+            checkAndDisplayResult('answer9_4', 'result9_4', 18),
+            checkAndDisplayResult('answer9_5', 'result9_5', 18)
+        ];
+
+        localStorage.setItem('resultsPage9', JSON.stringify(results));
+
+        }
+
+        document.getElementById('checkAnswersButton9').addEventListener('click', CheckAnswersPage9);
+    </script>
+</body>
+</html>
