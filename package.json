@@ -1,0 +1,19 @@
+{
+  "name": "your-frontend-project",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "main": "index.html",
+  "scripts": {
+    "start": "lite-server",
+    "build": "npm run minify-css && npm run minify-js",
+    "minify-css": "cleancss -o dist/style.min.css src/style.css",
+    "minify-js": "uglifyjs src/app.js -o dist/app.min.js"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "clean-css-cli": "^5.2.2",
+    "uglify-js": "^3.13.10"
+  },
+  "author": "Your Name",
+  "license": "ISC"
+}
